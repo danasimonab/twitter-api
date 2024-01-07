@@ -27,4 +27,9 @@ public class UserServiceImpl implements UserService{
 
         return users;
     }
+
+    @Override
+    public User followUser(User user) {
+        return null;
+    }
 }

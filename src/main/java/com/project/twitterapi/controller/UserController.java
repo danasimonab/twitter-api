@@ -43,5 +43,11 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(users);
     }
 
+    @PostMapping(value = "/follow")
+    public ResponseEntity<User> follow(@PathVariable long id, @RequestBody UserRequestDto userRequestDto){
+        User userToFollow = this.modelMapper.map(userRequestDto, User.class);
+        return new ResponseEntity<>(userService.followUser(userToFollow), HttpStatus.CREATED);
+    }
+
 
 }

@@ -9,4 +9,6 @@ public interface UserService {
     User registerUser(User user);
 
     List<User> getUsers(String username, String firstName, String lastName);
+
+    User followUser(User user);
 }

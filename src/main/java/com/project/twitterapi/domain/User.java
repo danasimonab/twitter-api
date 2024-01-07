@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="users")
 @Data
@@ -33,4 +35,10 @@ public class User {
     @NotBlank(message = "Password is mandatory")
     @Column(name = "password", nullable = false)
     private String password;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Follow> followings;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "following")
+    private List<Follow> followers;
 }
