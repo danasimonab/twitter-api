@@ -17,10 +17,12 @@ public class Follow {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user", nullable = false, referencedColumnName = "username")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "following", nullable = false, referencedColumnName = "username")
     private User following;
 
     private Long timestamp;
