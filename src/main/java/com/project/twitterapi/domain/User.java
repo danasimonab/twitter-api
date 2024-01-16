@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="users")
 @Data
@@ -30,7 +32,18 @@ public class User {
     @Column(name = "lastName", nullable = false)
     private String lastName;
 
+    @NotBlank(message = "Email is mandatory")
+    @Column(name = "email", nullable = false)
+    private String email;
+
     @NotBlank(message = "Password is mandatory")
     @Column(name = "password", nullable = false)
     private String password;
+
+    //bidirectional relationship
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+//    private List<Follow> followings;
+//
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "following")
+//    private List<Follow> followers;
 }
